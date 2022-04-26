@@ -40,7 +40,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               color: Colors.white),
                           children: [
                             TextSpan(
-                                text: " to Yummy chat!",
+                                text: isSignupScreen
+                                    ? " to Yummy chat!"
+                                    : ' back',
                                 style: TextStyle(
                                     letterSpacing: 1.0,
                                     fontSize: 25,
@@ -53,7 +55,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       height: 5,
                     ),
                     Text(
-                      'Signup to continue',
+                      isSignupScreen
+                          ? 'Signup to continue'
+                          : 'Signin to continue',
                       style: TextStyle(
                         letterSpacing: 1.0,
                         color: Colors.white,
@@ -64,11 +68,16 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               ),
             ),
           ),
-          Positioned(
+          // 배경
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeIn,
             top: 180,
-            child: Container(
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeIn,
               padding: EdgeInsets.all(20),
-              height: 280.0,
+              height: isSignupScreen ? 280.0 : 250,
               width: MediaQuery.of(context).size.width - 40,
               margin: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
@@ -140,35 +149,226 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     )
                   ],
                 ),
-                Container(
-                  child: Form(
+                if (isSignupScreen)
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Form(
                       child: Column(
-                    children: [
-                      TextFormField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.account_circle,
-                            color: Palette.iconColor,
+                        children: [
+                          TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.account_circle,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14, color: Palette.textColor1),
+                                contentPadding: EdgeInsets.all(10)),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Palette.textColor1),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
+                          SizedBox(
+                            height: 8,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Palette.textColor1),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(35),
-                            ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.account_circle,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14, color: Palette.textColor1),
+                                contentPadding: EdgeInsets.all(10)),
                           ),
-                        ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.account_circle,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14, color: Palette.textColor1),
+                                contentPadding: EdgeInsets.all(10)),
+                          ),
+                        ],
                       ),
-                    ],
-                  )),
-                )
+                    ),
+                  ),
+                if (!isSignupScreen)
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Form(
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.account_circle,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14, color: Palette.textColor1),
+                                contentPadding: EdgeInsets.all(10)),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.account_circle,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14, color: Palette.textColor1),
+                                contentPadding: EdgeInsets.all(10)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
               ]),
             ),
+          ),
+          // 텍스트 폼 필드
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeIn,
+            top: isSignupScreen ? 430 : 390,
+            right: 0,
+            left: 0,
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.all(15),
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.orange, Colors.red],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight),
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 1,
+                          spreadRadius: 1,
+                          offset: Offset(0, 1))
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // 전송버튼
+          Positioned(
+            top: MediaQuery.of(context).size.height - 125,
+            right: 0,
+            left: 0,
+            child: Column(children: [
+              Text(
+                isSignupScreen ? 'or Signup with' : 'or Signin with',
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextButton.icon(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    minimumSize: Size(155, 40),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    backgroundColor: Palette.googleColor),
+                icon: Icon(Icons.add),
+                label: Text('Google'),
+              ),
+            ]),
           )
         ],
       ),
