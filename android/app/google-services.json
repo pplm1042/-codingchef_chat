@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "87771387150",
+    "project_id": "pmportfolio-b53ea",
+    "storage_bucket": "pmportfolio-b53ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87771387150:android:183888ce8574943ca0b35f",
+        "android_client_info": {
+          "package_name": "com.example.codingchef_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87771387150-unpec6h1pq2vi4l8nrc64qa4lff18j41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChDZp6CpKRGdTMcyilk7lkRS8S5WKtcrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87771387150-unpec6h1pq2vi4l8nrc64qa4lff18j41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
