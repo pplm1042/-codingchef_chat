@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codingchef_chat/config/palette.dart';
 import 'package:codingchef_chat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
@@ -438,6 +439,15 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               password: userPassword,
                             );
 
+                            // 즉석으로 생성가능하니 파베에 미리 생성할 필요 없다
+                            await FirebaseFirestore.instance
+                                .collection('user')
+                                .doc(newUser.user!.uid)
+                                .set({
+                              'userName': userName,
+                              'email': userEmail,
+                            });
+
                             if (newUser.user != null) {
                               Navigator.push(
                                 context,
@@ -462,12 +472,12 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 .signInWithEmailAndPassword(
                                     email: userEmail, password: userPassword);
                             if (newUser.user != null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return ChatScreen();
-                                }),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) {
+                              //     return ChatScreen();
+                              //   }),
+                              // );
                               setState(() {
                                 showSpinner = false;
                               });
